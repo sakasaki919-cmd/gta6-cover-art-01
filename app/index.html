@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VICE HEAT — Cover Art Studio</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="stage">
+    <header class="brand">
+      <h1>VICE HEAT <span>Cover Art Studio</span></h1>
+      <p>Offline cover maker — photos never leave your browser. In the style of VI.</p>
+    </header>
+    <div class="canvas-wrap">
+      <canvas id="cover" width="960" height="960" aria-label="The cover preview"></canvas>
+      <p class="hint">Click a panel to select it · drag inside a panel to move its photo · scroll to zoom</p>
+    </div>
+  </section>
+  <aside class="controls" aria-label="Editor controls">
+    <section class="group">
+      <h2>Photos</h2>
+      <div id="dropzone" class="dropzone">
+        <label class="file-btn">Choose photos
+          <input id="photo" type="file" accept="image/*" multiple hidden>
+        </label>
+        <span>or drop images here (or straight onto the cover)</span>
+      </div>
+      <div id="tray" class="tray"></div>
+      <p id="tray-empty" class="muted">No photos yet — the cover is showing procedural art. Click a thumbnail to assign it to the selected panel.</p>
+    </section>
+    <section class="group">
+      <h2>Layout</h2>
+      <div id="layouts" class="btn-row"></div>
+    </section>
+    <section class="group">
+      <h2>Palette</h2>
+      <div id="palettes" class="btn-row"></div>
+    </section>
+    <section class="group">
+      <h2>Title &amp; tagline</h2>
+      <label>Title line 1 <input id="line1" type="text" maxlength="24" value="VICE"></label>
+      <label>Title line 2 <input id="line2" type="text" maxlength="24" value="HEAT"></label>
+      <label>Tagline <input id="tagline" type="text" maxlength="60" value="EVERY SUNSET HAS A PRICE"></label>
+      <div class="row-label">Text color</div>
+      <div id="textcolors" class="btn-row"></div>
+      <div class="row-label">Title position</div>
+      <div id="textpos" class="btn-row"></div>
+    </section>
+    <section class="group">
+      <h2 id="panel-label">Panel 1</h2>
+      <div class="row-label">Treatment</div>
+      <div id="treatments" class="btn-row"></div>
+      <label>Zoom <span class="val" id="scale-val">100%</span>
+        <input id="scale" type="range" min="0.5" max="4" step="0.05" value="1">
+      </label>
+      <label>Rotate <span class="val" id="rotate-val">0°</span>
+        <input id="rotate" type="range" min="-45" max="45" step="1" value="0">
+      </label>
+      <div class="check-row">
+        <button id="flip" type="button" aria-pressed="false">Flip horizontal</button>
+        <label class="check"><input id="border" type="checkbox" checked> Panel border</label>
+      </div>
+      <button id="procedural" type="button" class="ghost">Use procedural art for this panel</button>
+    </section>
+    <section class="group">
+      <h2>Export</h2>
+      <label>Size <select id="sizes"></select></label>
+      <div class="actions">
+        <button id="randomize" type="button" class="ghost">🎲 Randomize style</button>
+        <button id="export" type="button" class="primary">⬇ Export PNG</button>
+      </div>
+      <p id="status" role="status">Ready — upload a photo or hit Randomize.</p>
+    </section>
+    <p class="fineprint">100% offline. No uploads, no tracking, no Rockstar assets — every visual is drawn on canvas. Fonts are system fonts only.</p>
+  </aside>
+</main>
+<script type="module" src="./src/studio.js"></script>
+</body>
+</html>
